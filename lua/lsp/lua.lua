@@ -1,14 +1,15 @@
 -- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
 USER = vim.fn.expand('$USER')
 
-local sumneko_root_path = "/.config/lua-language-server"
+local sumneko_root_path = "/library/lua-language-server"
 
-local sumneko_binary = "/.config/lua-language-server/Linux/lua-language-server"
+local sumneko_binary = "/library/lua-language-server/Linux/lua-language-server"
 
 
 if vim.fn.has("unix") == 1 then
-    sumneko_root_path = "/home/" .. USER .. "/.config/lua-language-server"
-    sumneko_binary = "/home/" .. USER .. "/.config/lua-language-server/bin/Linux/lua-language-server"
+    sumneko_root_path = "/home/" .. USER .. "/library/lua-language-server"
+	-- find ur /bin/lua-language-server exec file!!!
+    sumneko_binary = "/home/" .. USER .. "/library/lua-language-server/bin/lua-language-server"
 end
 require'lspconfig'.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
