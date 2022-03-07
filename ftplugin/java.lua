@@ -1,4 +1,6 @@
 --require'lspconfig'.jdtls.setup{ cmd = { 'jdtls' } }
+USER = vim.fn.expand('$USER')
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
@@ -15,6 +17,7 @@ local config = {
     '-Dlog.level=ALL',
     '-Xms1g',
 	-- need sudo chmod -R 777 to the /library/java!!!!!!!!!
+	-- must use /home/urname/... don't use ~/urname/library or $HOME/library... !!!!!!
     '-jar', '/home/oxalis/library/java/jdt-language-server-1.7.0-202112161541/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
     '-configuration', '/home/oxalis/library/java/jdt-language-server-1.7.0-202112161541/config_linux',
     '-data', vim.fn.expand('$HOME/.cache/jdtls-workspace').. workspace_dir,
